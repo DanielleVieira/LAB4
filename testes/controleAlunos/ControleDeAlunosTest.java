@@ -16,30 +16,30 @@ public class ControleDeAlunosTest {
 	@Before
 	public void setUp() throws Exception {
 		this.ca1 = new ControleDeAlunos();
-		this.ca1.cadastrarAluno("250", "Gabriel Reyes", "ComputaÃ§Ã£o");
+		this.ca1.cadastrarAluno("500", "Gabriel Reyes", "Computação");
 	}
 
 	
 	
 	@Test
 	public void testCadastrarAluno() {
-		assertTrue(this.ca1.cadastrarAluno("250", "Mei-Ling Zhou", "Computaï¿½ï¿½o"));
-		assertFalse(this.ca1.cadastrarAluno("250", "Mei-Ling Zhou", "Computaï¿½ï¿½o"));
-		assertTrue(this.ca1.cadastrarAluno("140", "Mei-Ling Zhou", "Computaï¿½ï¿½o"));
+		assertTrue(this.ca1.cadastrarAluno("250", "Mei-Ling Zhou", "Computação"));
+		assertFalse(this.ca1.cadastrarAluno("250", "Mei-Ling Zhou", "Computação"));
+		assertTrue(this.ca1.cadastrarAluno("140", "Mei-Ling Zhou", "Computação"));
 	}
 	
 	
 	
 	@Test(expected = NullPointerException.class)
 	public void testCadastrarMatriculaNull() {
-		this.ca1.cadastrarAluno(null, "Mei-Ling Zhou", "Computaï¿½ï¿½o");
+		this.ca1.cadastrarAluno(null, "Mei-Ling Zhou", "Computação");
 	}
 	
 	
 	
 	@Test(expected = NullPointerException.class)
 	public void testCadastrarNomeNull() {
-		this.ca1.cadastrarAluno("250", null, "Computaï¿½ï¿½o");
+		this.ca1.cadastrarAluno("250", null, "Computação");
 	}
 	
 	
@@ -53,14 +53,14 @@ public class ControleDeAlunosTest {
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testCadastrarMatriculaInvalida() {
-		this.ca1.cadastrarAluno("", "Mei-Ling Zhou", "Computaï¿½ï¿½o");
+		this.ca1.cadastrarAluno("", "Mei-Ling Zhou", "Computação");
 	}
 	
 	
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testCadastrarNomeInvalido() {
-		this.ca1.cadastrarAluno("250", " ", "Computaï¿½ï¿½o");
+		this.ca1.cadastrarAluno("250", " ", "Computação");
 	}
 	
 	
@@ -75,10 +75,10 @@ public class ControleDeAlunosTest {
 	@Test
 	public void testExibirAluno() {
 		ControleDeAlunos ca2 = new ControleDeAlunos();
-		assertEquals("Aluno: 250 - Gabriel Reyes - ComputaÃ§Ã£o", this.ca1.exibirAluno("250"));
-		assertEquals("Aluno nÃ£o cadastrado.", this.ca1.exibirAluno("2500"));
-		assertEquals("Aluno nÃ£o cadastrado.", this.ca1.exibirAluno(""));
-		assertEquals("Aluno nÃ£o cadastrado.", this.ca1.exibirAluno(null));
-		assertEquals("Aluno nÃ£o cadastrado.", ca2.exibirAluno("250"));
+		assertEquals("Aluno: 500 - Gabriel Reyes - Computação", this.ca1.exibirAluno("500"));
+		assertEquals("Aluno não cadastrado.", this.ca1.exibirAluno("2500"));
+		assertEquals("Aluno não cadastrado.", this.ca1.exibirAluno(""));
+		assertEquals("Aluno não cadastrado.", this.ca1.exibirAluno(null));
+		assertEquals("Aluno não cadastrado.", ca2.exibirAluno("250"));
 	} 
 }

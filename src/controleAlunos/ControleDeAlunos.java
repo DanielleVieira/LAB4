@@ -1,9 +1,7 @@
 package controleAlunos;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 public class ControleDeAlunos {
 
@@ -30,16 +28,7 @@ public class ControleDeAlunos {
 
 
 	private boolean matriculaJaExiste(String mat) {
-		Set<String> matriculas = this.registroDeAlunos.keySet();
-		Iterator<String> iterator = matriculas.iterator(); 
-		
-		while(iterator.hasNext()) {
-			String matricula = iterator.next();
-			if(matricula.equals(mat)) {
-				return true;
-			}
-		}
-		return false;
+		return this.registroDeAlunos.containsKey(mat);
 	}
 	
 	
@@ -51,8 +40,17 @@ public class ControleDeAlunos {
 
 
 	public String exibirAluno(String matricula) {
-		// TODO Auto-generated method stub
-		return null;
+		Aluno aluno = this.getAluno(matricula);
+		if(aluno == null) {
+			return "Aluno não cadastrado.";
+		} 
+		return aluno.toString();
+	}
+	
+	
+	
+	private Aluno getAluno(String matricula) {
+		return this.registroDeAlunos.get(matricula);
 	}
 	
 }

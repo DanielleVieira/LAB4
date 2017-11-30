@@ -72,7 +72,7 @@ public class Aluno {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());
+		result = prime * result + ((this.getMatricula() == null) ? 0 : this.getMatricula().hashCode());
 		return result;
 	}
 
@@ -90,12 +90,18 @@ public class Aluno {
 		if (getClass() != obj.getClass())
 			return false;
 		Aluno other = (Aluno) obj;
-		if (matricula == null) {
-			if (other.matricula != null)
+		if (this.getMatricula() == null) {
+			if (other.getMatricula() != null)
 				return false;
-		} else if (!matricula.equals(other.matricula))
+		} else if (!this.getMatricula().equals(other.getMatricula()))
 			return false;
 		return true;
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		return String.format("Aluno: %s - %s - %s", this.getMatricula(), this.getNome(), this.getCurso());
+	}
 }
