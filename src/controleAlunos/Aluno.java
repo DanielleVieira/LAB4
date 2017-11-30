@@ -26,9 +26,15 @@ public class Aluno {
 	
 	
 	private void verificaStringInvalida(String str) {
-		if(str.trim().isEmpty()) {
+		if(this.ehStringVazia(str)) {
 			throw new IllegalArgumentException();
 		}
+	}
+	
+	
+	
+	private boolean ehStringVazia(String str) {
+		return str.trim().isEmpty();
 	}
 	
 	
