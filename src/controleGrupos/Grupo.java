@@ -3,6 +3,7 @@ package controleGrupos;
 import static util.Verificacoes.*;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import controleAlunos.Aluno;
@@ -69,6 +70,19 @@ public class Grupo {
 		} else if (!this.getNome().equals(other.getNome()))
 			return false;
 		return true;
+	}
+
+
+
+	public String exibirAlunosDoGrupo() {
+		StringBuilder str = new StringBuilder();
+		Iterator itr = alunosDoGrupo.iterator();
+		while(itr.hasNext()) {
+			Aluno aluno = (Aluno) itr.next();
+			String strAluno = String.format("* %s\n", aluno.toString());
+			str.append(strAluno);
+		}
+		return new String(str);
 	}
 	
 }

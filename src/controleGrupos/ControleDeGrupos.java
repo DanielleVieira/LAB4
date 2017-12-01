@@ -62,6 +62,16 @@ public class ControleDeGrupos {
 	public Aluno getAluno(String matricula) {
 		return this.controleDeAlunos.getAluno(matricula);
 	}
+
+
+
+	public String exibirGrupo(String nomeGrupo) throws NullPointerException{
+		Grupo grupo = this.registroDeGrupos.get(nomeGrupo.toUpperCase());
+		if(grupo == null) {
+			return "Grupo não cadastrado.";
+		}
+		return String.format("Alunos do grupo %s:\n%s", grupo.getNome(), grupo.exibirAlunosDoGrupo());
+	}
 	
 	
 }

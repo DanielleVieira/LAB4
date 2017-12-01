@@ -78,4 +78,20 @@ public class ControleDeGruposTest {
 		this.cg1.alocarAluno("250", null);
 	}
 	
+	
+	
+	@Test
+	public void testExibirGrupo() {
+		//exibir grupo cadastrado
+		assertEquals("Alunos do grupo Listas:\n* 500 - Gabriel Reyes - Computação\n", this.cg1.exibirGrupo("listas"));
+		//exibir grupo nao cadastrado
+		assertEquals("Grupo não cadastrado.", this.cg1.exibirGrupo("Cálculo"));
+	}
+	
+	
+	
+	@Test(expected = NullPointerException.class)
+	public void exibirGrupoNomeGrupoNull() {
+		this.cg1.exibirGrupo(null);
+	}
 }

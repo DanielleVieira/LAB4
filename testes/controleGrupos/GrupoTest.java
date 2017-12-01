@@ -15,6 +15,7 @@ public class GrupoTest {
 	private Grupo g2;
 	private Grupo g3;
 	private Aluno a1;
+	private Aluno a2;
 	
 	
 	
@@ -24,6 +25,8 @@ public class GrupoTest {
 		this.g2 = new Grupo("Listas");
 		this.g3 = new Grupo("Cálculo");
 		this.a1 = new Aluno("250", "Mei-Ling Zhou", "Computação");
+		this.a2 = new Aluno("500", "Gabriel Reyes", "Computação");
+		this.g1.alocarAluno(a2);
 	}
 
 	
@@ -60,8 +63,15 @@ public class GrupoTest {
 	
 	
 	@Test(expected = NullPointerException.class)
-	public void alocarAlunoNull() {
+	public void testAlocarAlunoNull() {
 		this.g1.alocarAluno(null);
+	}
+	
+	
+	
+	@Test
+	public void testExibirAlunosDoGrupo() {
+		assertEquals("* 500 - Gabriel Reyes - Computação\n", this.g1.exibirAlunosDoGrupo());
 	}
 	
 	
