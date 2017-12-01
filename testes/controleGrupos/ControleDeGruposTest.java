@@ -74,7 +74,7 @@ public class ControleDeGruposTest {
 	
 	
 	@Test(expected = NullPointerException.class)
-	public void alocarAlunoNomeGrupoNull() {
+	public void testAlocarAlunoNomeGrupoNull() {
 		this.cg1.alocarAluno("250", null);
 	}
 	
@@ -91,7 +91,7 @@ public class ControleDeGruposTest {
 	
 	
 	@Test(expected = NullPointerException.class)
-	public void exibirGrupoNomeGrupoNull() {
+	public void testExibirGrupoNomeGrupoNull() {
 		this.cg1.exibirGrupo(null);
 	}
 }
