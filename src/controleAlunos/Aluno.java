@@ -1,66 +1,46 @@
 package controleAlunos;
 
+import static util.Verificacoes.*;
+
 public class Aluno {
 
-	
-	
-	private final String matricula;
-	private final String nome;
-	private final String curso;
-	
-	
-	
+
+
+	private String matricula;
+	private String nome;
+	private String curso;
+
+
+
 	public Aluno(String matricula, String nome, String curso) throws NullPointerException, IllegalArgumentException {
-		this.verificaStringInvalida(matricula);
-		this.verificaStringInvalida(nome);
-		this.verificaStringInvalida(curso);
-		this.verificaNull(nome);
-		this.verificaNull(nome);
-		this.verificaNull(curso);
+		verificaStringInvalida(matricula);
+		verificaStringInvalida(nome);
+		verificaStringInvalida(curso);
+		verificaNull(nome);
+		verificaNull(nome);
+		verificaNull(curso);
 		
 		this.matricula = matricula;
 		this.nome = nome;
 		this.curso = curso;
 	}
 	
-	
-	
-	private void verificaStringInvalida(String str) {
-		if(this.ehStringVazia(str)) {
-			throw new IllegalArgumentException();
-		}
-	}
-	
-	
-	
-	private boolean ehStringVazia(String str) {
-		return str.trim().isEmpty();
-	}
-	
-	
-	
-	private void verificaNull(String str) {
-		if(str == null) {
-			throw new NullPointerException();
-		}
-	}
-
 
 
 	public String getMatricula() {
-		return matricula;
+		return this.matricula;
 	}
 
 
 
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
 
 
 	public String getCurso() {
-		return curso;
+		return this.curso;
 	}
 
 
