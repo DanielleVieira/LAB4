@@ -23,8 +23,11 @@ public class ControleDeAlunosTest {
 	
 	@Test
 	public void testCadastrarAluno() {
+		//cadastrar novo aluno
 		assertTrue(this.ca1.cadastrarAluno("250", "Mei-Ling Zhou", "Computação"));
+		// cadastrar aluno com uma matricula ja cadastrada
 		assertFalse(this.ca1.cadastrarAluno("250", "Mei-Ling Zhou", "Computação"));
+		//cadastrar mesmo aluno com matricula diferente
 		assertTrue(this.ca1.cadastrarAluno("140", "Mei-Ling Zhou", "Computação"));
 	}
 	
@@ -75,10 +78,15 @@ public class ControleDeAlunosTest {
 	@Test
 	public void testExibirAluno() {
 		ControleDeAlunos ca2 = new ControleDeAlunos();
+		// matricula cadastrada
 		assertEquals("Aluno: 500 - Gabriel Reyes - Computação", this.ca1.exibirAluno("500"));
+		//matricula nao cadastrada
 		assertEquals("Aluno não cadastrado.", this.ca1.exibirAluno("2500"));
+		//matricula invalida
 		assertEquals("Aluno não cadastrado.", this.ca1.exibirAluno(""));
+		//matricula nula
 		assertEquals("Aluno não cadastrado.", this.ca1.exibirAluno(null));
+		// registroDeAlunos sem nenhum cadastro feito
 		assertEquals("Aluno não cadastrado.", ca2.exibirAluno("250"));
 	} 
 }

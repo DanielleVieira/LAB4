@@ -33,7 +33,7 @@ public class ControleDeAlunos {
 	
 	
 
-	private Aluno novoAluno(String matricula, String nome, String curso) {
+	private Aluno novoAluno(String matricula, String nome, String curso) throws NullPointerException, IllegalArgumentException {
 		return new Aluno(matricula, nome, curso);
 	}
 
@@ -44,12 +44,12 @@ public class ControleDeAlunos {
 		if(aluno == null) {
 			return "Aluno não cadastrado.";
 		} 
-		return aluno.toString();
+		return String.format("Aluno: %s", aluno.toString());
 	}
 	
 	
 	
-	private Aluno getAluno(String matricula) {
+	public Aluno getAluno(String matricula) {
 		return this.registroDeAlunos.get(matricula);
 	}
 	

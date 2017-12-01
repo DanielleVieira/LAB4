@@ -18,8 +18,8 @@ public abstract class Verificacoes {
 	
 	
 	
-	public static void verificaNull(String str) {
-		if(str == null) {
+	public static void verificaNull(Object obj) {
+		if(obj == null) {
 			throw new NullPointerException();
 		}
 	}

@@ -2,20 +2,34 @@ package controleGrupos;
 
 import static util.Verificacoes.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import controleAlunos.Aluno;
+
 public class Grupo {
 
 	
 	
 	private String nome;
+	private Set<Aluno> alunosDoGrupo;
 
 	
 	
-	public Grupo(String nome) {
+	public Grupo(String nome) throws NullPointerException, IllegalArgumentException {
 		verificaStringInvalida(nome);
 		verificaNull(nome);
 		this.nome = nome;
+		this.alunosDoGrupo = new HashSet<>();
 	}
 
+	
+	
+	public boolean alocarAluno(Aluno aluno) throws NullPointerException {
+		verificaNull(aluno);
+		return this.alunosDoGrupo.add(aluno);
+	}
+	
 	
 	
 	public String getNome() {
@@ -56,8 +70,5 @@ public class Grupo {
 			return false;
 		return true;
 	}
-
-	
-	
 	
 }

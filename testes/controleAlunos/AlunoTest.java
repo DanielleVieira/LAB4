@@ -77,8 +77,11 @@ public class AlunoTest {
 	
 	@Test
 	public void testEquals() {
+		//diferentes pessoas com mesma matricula
 		assertTrue(this.a1.equals(this.a2));
+		//mesma pessoa com diferente matricula
 		assertFalse(this.a1.equals(this.a3));
+		//argumento null
 		assertFalse(this.a1.equals(null));
 	}
 	
@@ -86,7 +89,7 @@ public class AlunoTest {
 	
 	@Test
 	public void testToString() {
-		assertEquals("Aluno: 250 - Mei-Ling Zhou - Computação", a1.toString());
+		assertEquals("250 - Mei-Ling Zhou - Computação", a1.toString());
 	}
 	
 }

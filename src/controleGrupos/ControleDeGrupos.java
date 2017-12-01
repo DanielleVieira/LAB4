@@ -3,17 +3,22 @@ package controleGrupos;
 import java.util.HashMap;
 import java.util.Map;
 
+import controleAlunos.Aluno;
+import controleAlunos.ControleDeAlunos;
+
 
 public class ControleDeGrupos {
 
 	
 	
 	private Map<String, Grupo> registroDeGrupos;
+	private ControleDeAlunos controleDeAlunos;
 	
 
 	
-	public ControleDeGrupos() {
+	public ControleDeGrupos(ControleDeAlunos controleDeAlunos) {
 		this.registroDeGrupos = new HashMap<>();
+		this.controleDeAlunos = controleDeAlunos;
 	}
 
 
@@ -34,7 +39,29 @@ public class ControleDeGrupos {
 	
 	
 
-	private Grupo novoGrupo(String nome) {
+	private Grupo novoGrupo(String nome) throws NullPointerException {
 		return new Grupo(nome);
 	}
+
+
+
+	public String alocarAluno(String matricula, String nomeGrupo) throws NullPointerException {
+		Aluno aluno = this.getAluno(matricula);
+		Grupo grupo = this.registroDeGrupos.get(nomeGrupo.toUpperCase());
+		if(aluno == null) {
+			return "Aluno não cadastrado.";
+		} else if(grupo == null) {
+			return "Grupo não cadastrado.";
+		}
+		grupo.alocarAluno(aluno);
+		return "ALUNO ALOCADO!";
+	}
+
+	
+	
+	public Aluno getAluno(String matricula) {
+		return this.controleDeAlunos.getAluno(matricula);
+	}
+	
+	
 }

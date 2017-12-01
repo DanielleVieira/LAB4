@@ -82,6 +82,6 @@ public class Aluno {
 	
 	@Override
 	public String toString() {
-		return String.format("Aluno: %s - %s - %s", this.getMatricula(), this.getNome(), this.getCurso());
+		return String.format("%s - %s - %s", this.getMatricula(), this.getNome(), this.getCurso());
 	}
 }
