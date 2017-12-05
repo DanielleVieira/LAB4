@@ -2,6 +2,7 @@ package controleGrupos;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 import controleAlunos.Aluno;
 import controleAlunos.ControleDeAlunos;
@@ -45,16 +46,16 @@ public class ControleDeGrupos {
 
 
 
-	public String alocarAluno(String matricula, String nomeGrupo) throws NullPointerException {
+	public boolean alocarAluno(String matricula, String nomeGrupo) throws NullPointerException {
 		Aluno aluno = this.getAluno(matricula);
 		Grupo grupo = this.registroDeGrupos.get(nomeGrupo.toUpperCase());
 		if(aluno == null) {
-			return "Aluno não cadastrado.";
+			throw new NoSuchElementException("Aluno nï¿½o cadastrado.");
 		} else if(grupo == null) {
-			return "Grupo não cadastrado.";
+			throw new NoSuchElementException("Grupo nï¿½o cadastrado.");
 		}
 		grupo.alocarAluno(aluno);
-		return "ALUNO ALOCADO!";
+		return true;
 	}
 
 	
@@ -68,7 +69,7 @@ public class ControleDeGrupos {
 	public String exibirGrupo(String nomeGrupo) throws NullPointerException{
 		Grupo grupo = this.registroDeGrupos.get(nomeGrupo.toUpperCase());
 		if(grupo == null) {
-			return "Grupo não cadastrado.";
+			return "Grupo nï¿½o cadastrado.";
 		}
 		return String.format("Alunos do grupo %s:\n%s", grupo.getNome(), grupo.exibirAlunosDoGrupo());
 	}

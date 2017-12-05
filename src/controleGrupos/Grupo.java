@@ -33,6 +33,19 @@ public class Grupo {
 	
 	
 	
+	public String exibirAlunosDoGrupo() {
+		StringBuilder str = new StringBuilder();
+		Iterator<Aluno> itr = alunosDoGrupo.iterator();
+		while(itr.hasNext()) {
+			Aluno aluno = itr.next();
+			String strAluno = String.format("* %s\n", aluno.toString());
+			str.append(strAluno);
+		}
+		return new String(str);
+	}
+	
+	
+	
 	public String getNome() {
 		return this.nome;
 	}
@@ -72,17 +85,4 @@ public class Grupo {
 		return true;
 	}
 
-
-
-	public String exibirAlunosDoGrupo() {
-		StringBuilder str = new StringBuilder();
-		Iterator itr = alunosDoGrupo.iterator();
-		while(itr.hasNext()) {
-			Aluno aluno = (Aluno) itr.next();
-			String strAluno = String.format("* %s\n", aluno.toString());
-			str.append(strAluno);
-		}
-		return new String(str);
-	}
-	
 }
