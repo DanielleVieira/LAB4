@@ -8,11 +8,13 @@ public class ControleDeAlunos {
 	
 		
 	private Map<String, Aluno> registroDeAlunos;
+	private AlunosQueRespondem alunosquerespondem;
 	
 	
 	
 	public ControleDeAlunos() {
 		this.registroDeAlunos = new HashMap<>();
+		this.alunosquerespondem = new AlunosQueRespondem();
 	}
 
 
@@ -51,6 +53,22 @@ public class ControleDeAlunos {
 	
 	public Aluno getAluno(String matricula) {
 		return this.registroDeAlunos.get(matricula);
+	}
+
+
+
+	public boolean cadastrarAlunosQueRespondem(String matricula) {
+		Aluno aluno = this.getAluno(matricula);
+		if(aluno == null) {
+			return false;
+		} 
+		return this.alunosquerespondem.cadastrarAlunosQueRespondem(aluno);
+	}
+
+
+
+	public String exibirAlunosQueRespondem() {
+		return this.alunosquerespondem.toString();
 	}
 	
 }

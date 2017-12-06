@@ -89,4 +89,31 @@ public class ControleDeAlunosTest {
 		// registroDeAlunos sem nenhum cadastro feito
 		assertEquals("Aluno não cadastrado.", ca2.exibirAluno("250"));
 	} 
+	
+	
+	
+	@Test
+	public void testCadastrarAlunosQueRespondem() {
+		//matricula cadastrada
+		assertTrue(this.ca1.cadastrarAlunosQueRespondem("500"));
+		//matricula nao cadastrada
+		assertFalse(this.ca1.cadastrarAlunosQueRespondem("50000"));
+		// matricula invalida
+		assertFalse(this.ca1.cadastrarAlunosQueRespondem("   "));
+		// matricula nula
+		assertFalse(this.ca1.cadastrarAlunosQueRespondem(null));
+	}
+	
+	
+	
+	@Test
+	public void testExibirAlunosQueRespondem() {
+		//imprimir da lista sem ter cadastrado nenhum aluno que responde
+		assertEquals("Alunos:\n", this.ca1.exibirAlunosQueRespondem());
+		//exibir após cadastrar aluno que responde
+		this.ca1.cadastrarAlunosQueRespondem("500");
+		assertEquals("Alunos:\n1. 500 - Gabriel Reyes - Computação\n", this.ca1.exibirAlunosQueRespondem());
+		this.ca1.cadastrarAlunosQueRespondem("500");
+		assertEquals("Alunos:\n1. 500 - Gabriel Reyes - Computação\n2. 500 - Gabriel Reyes - Computação\n", this.ca1.exibirAlunosQueRespondem());
+	}
 }

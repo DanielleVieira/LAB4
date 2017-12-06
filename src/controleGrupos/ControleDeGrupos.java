@@ -24,6 +24,7 @@ public class ControleDeGrupos {
 
 
 	
+	
 	public boolean cadastrarGrupo(String nome) throws NullPointerException, IllegalArgumentException {
 		if(this.grupoJaExiste(nome)) {
 			return false;
@@ -34,7 +35,7 @@ public class ControleDeGrupos {
 
 
 
-	private boolean grupoJaExiste(String nome) {
+	private boolean grupoJaExiste(String nome) throws NullPointerException {
 		return this.registroDeGrupos.containsKey(nome.toUpperCase());
 	}
 	
@@ -46,13 +47,13 @@ public class ControleDeGrupos {
 
 
 
-	public boolean alocarAluno(String matricula, String nomeGrupo) throws NullPointerException {
+	public boolean alocarAluno(String matricula, String nomeGrupo) throws NullPointerException, NoSuchElementException {
 		Aluno aluno = this.getAluno(matricula);
 		Grupo grupo = this.registroDeGrupos.get(nomeGrupo.toUpperCase());
 		if(aluno == null) {
-			throw new NoSuchElementException("Aluno nï¿½o cadastrado.");
+			throw new NoSuchElementException("Aluno não cadastrado.");
 		} else if(grupo == null) {
-			throw new NoSuchElementException("Grupo nï¿½o cadastrado.");
+			throw new NoSuchElementException("Grupo não cadastrado.");
 		}
 		grupo.alocarAluno(aluno);
 		return true;
@@ -60,19 +61,18 @@ public class ControleDeGrupos {
 
 	
 	
-	public Aluno getAluno(String matricula) {
+	private Aluno getAluno(String matricula) {
 		return this.controleDeAlunos.getAluno(matricula);
 	}
+	
 
-
-
+	
 	public String exibirGrupo(String nomeGrupo) throws NullPointerException{
 		Grupo grupo = this.registroDeGrupos.get(nomeGrupo.toUpperCase());
 		if(grupo == null) {
-			return "Grupo nï¿½o cadastrado.";
+			return "Grupo não cadastrado.";
 		}
 		return String.format("Alunos do grupo %s:\n%s", grupo.getNome(), grupo.exibirAlunosDoGrupo());
 	}
-	
 	
 }
